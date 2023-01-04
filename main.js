@@ -1,3 +1,4 @@
+
 //---To Note---
 //1. All pre-built functions must return a new array
 //2. You can make new functions as long as you want but do not change or update the pre-built ones
@@ -14,24 +15,34 @@ export var newsList = [
   "Decoder: Armenia in a bind as Ukraine war resets global order",
   "What books should an aspiring journalist read?",
   "Marie Colvin shined a light on war-torn corners of the world",
-  "Lian is a cool Web Developer",
+  
 ];
 
-export function search() {
+export function search(text = "") {
   //inputValue is the variable that contains the search string
-  const inputValue = document.getElementById("search-input").value;
+  const search = document.getElementById("search-input");
 
   //Write your code here for the search function
+  if (search) {
+    text = search.value;
+  }
 
-  return newsList;
+  text = text.trim().toLowerCase();
+
+  return newsList.filter((news) => {
+    return news.toLowerCase().includes(text);
+  });
+  
 }
 
 export function sort(type) {
   if (type == "ascending") {
     //Write your code here for sorting (ascending)
+    return newsList.sort();
   } else {
     //Write your code here for sorting (descending)
+    return newsList.reverse();
   }
 
-  return newsList;
+ 
 }
